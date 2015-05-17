@@ -1,14 +1,18 @@
-class Dog {
-	
-	constructor(name) {
-		var element = document.createElement('div');
-		element.classList.add('dog');
-		this._el = element;
-		this._name = name;
-	}
+class View {
 
-	render() {
-		this._el.textContent = this._name;
+		constructor(model){
+			this.model = model;
+			var element = document.createElement('div');
+			element.classList.add( this.name );
+			this.el = element;
+		}
+
+}
+
+class Dog extends View {
+
+	constructor(model) {
+		super(model);
 	}
 
 }
