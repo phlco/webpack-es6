@@ -56,17 +56,11 @@
 
 	var _dogJs2 = _interopRequireDefault(_dogJs);
 
-	var _puggleJs = __webpack_require__(3);
-
-	var _puggleJs2 = _interopRequireDefault(_puggleJs);
-
 	(0, _jquery2['default'])(document).ready(function () {
 
-		var dog = new _dogJs2['default']('Sam');
-		(0, _jquery2['default'])('body').append(dog._el);
+		var dog = new _dogJs2['default']({ name: 'Sam' });
+		(0, _jquery2['default'])('body').append(dog.el);
 		dog.render();
-		window.p = new _puggleJs2['default']('Phil');
-		window.dog = dog;
 	});
 
 /***/ },
@@ -9295,73 +9289,32 @@
 		value: true
 	});
 
-	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; }
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
-	var View = function View(model) {
-		_classCallCheck(this, View);
-
-		this.model = model;
-		var element = document.createElement('div');
-		element.classList.add(this.name);
-		this.el = element;
-	};
-
-	var Dog = (function (_View) {
+	var Dog = (function () {
 		function Dog(model) {
 			_classCallCheck(this, Dog);
 
-			_get(Object.getPrototypeOf(Dog.prototype), 'constructor', this).call(this, model);
+			this.model = model;
+			var element = document.createElement('div');
+			element.classList.add(this.name);
+			this.el = element;
 		}
 
-		_inherits(Dog, _View);
+		_createClass(Dog, [{
+			key: 'render',
+			value: function render() {
+				this.el.textContent = this.model.name;
+			}
+		}]);
 
 		return Dog;
-	})(View);
+	})();
 
 	exports['default'] = Dog;
 	module.exports = exports['default'];
-
-/***/ },
-/* 3 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	var Dog = function Dog(name) {
-	  _classCallCheck(this, Dog);
-
-	  this.name = name;
-	};
-
-	var Puggle = (function (_Dog) {
-	  function Puggle(name) {
-	    _classCallCheck(this, Puggle);
-
-	    _get(Object.getPrototypeOf(Puggle.prototype), "constructor", this).call(this, name);
-	    this.isCute = true;
-	  }
-
-	  _inherits(Puggle, _Dog);
-
-	  return Puggle;
-	})(Dog);
-
-	exports["default"] = Puggle;
-	module.exports = exports["default"];
 
 /***/ }
 /******/ ]);
